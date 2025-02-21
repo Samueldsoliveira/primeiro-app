@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Task } from './entities/task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -8,15 +7,6 @@ import { PaginationDto } from 'src/common/dto/pagination.dto';
 @Injectable()
 export class TasksService {
   constructor(private prisma: PrismaService) {}
-
-  private tasks: Task[] = [
-    {
-      id: 1,
-      name: 'Samuel dos santos Oliveira',
-      description: 'Desenvolvedor fullstack',
-      completed: false,
-    },
-  ];
 
   async findAll(paginationDto?: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
