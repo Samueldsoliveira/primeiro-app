@@ -41,16 +41,17 @@ export class TasksService {
           name: createTaskDto.name,
           description: createTaskDto.description,
           completed: false,
+          userId: createTaskDto.userId,
         },
       });
 
       return newTask;
-    } catch (err) {
+    } catch (error) {
+      console.log(error);
       throw new HttpException(
         'Falha ao criar essa tarefa!',
         HttpStatus.BAD_REQUEST,
       );
-      console.log(err);
     }
   }
 
@@ -70,7 +71,11 @@ export class TasksService {
         where: {
           id: findTask.id,
         },
-        data: updateTaskDto,
+        data: {
+          name: updateTaskDto?.name,
+          description: updateTaskDto?.description,
+          completed: updateTaskDto.completed,
+        },
       });
 
       return task;
