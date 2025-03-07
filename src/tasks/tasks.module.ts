@@ -14,6 +14,10 @@ import { ApiExceptionFilter } from 'src/common/filters/expection-filter';
       provide: APP_FILTER,
       useClass: ApiExceptionFilter,
     },
+    {
+      provide: 'KEY_TOKEN',
+      useValue: 'TOKEN_123456789',
+    },
   ],
 })
 export class TasksModule {}
