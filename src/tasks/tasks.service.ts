@@ -31,7 +31,7 @@ export class TasksService {
 
     if (task?.name) return task;
 
-    throw new HttpException('Tarefa não encontrada', HttpStatus.NOT_FOUND);
+    throw new HttpException('', HttpStatus.NOT_FOUND);
   }
 
   async create(createTaskDto: CreateTaskDto) {
