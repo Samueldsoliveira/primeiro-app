@@ -7,12 +7,15 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { AuthAdminGuard } from 'src/common/guards/admin.guard';
 
 @Controller('users')
+@UseGuards(AuthAdminGuard)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
